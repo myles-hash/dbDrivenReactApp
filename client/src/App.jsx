@@ -1,8 +1,8 @@
-import { Routes, Route, Link, Outlet} from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { PostsPage } from "./pages/PostsPage";
 import { FormPage } from "./pages/FormPage";
-
+ 
 export default function App(){
   return (
     <>

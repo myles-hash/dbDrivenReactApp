@@ -9,3 +9,12 @@ CREATE TABLE posts (
   content TEXT,
   category_id INT REFERENCES categories(id)
 );
+
+INSERT INTO categories(name) VALUES('Technology');
+INSERT INTO categories(name) VALUES('Lifestyle');
+INSERT INTO categories(name) VALUES('Education');
+
+INSERT INTO posts(title, content, category_id) VALUES('Tech test title', 'Tech test content', 1);
+INSERT INTO posts(title, content, category_id) VALUES('Life test title', 'Life test content', 2);
+INSERT INTO posts(title, content, category_id) VALUES('Educate test title', 'Educate test content', 3);
+

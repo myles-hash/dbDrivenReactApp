@@ -1,28 +1,50 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 export function FormPage() {
     const [formValues, setFormValues] = useState ({
         title: "",
-        content: ""
+        content: "",
+        category_id: "",
     });
-    const [searchParams, setSearchParams] = useSearchParams();
 
-    function handleSubmit(event) {
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("The form values are:", formValues);
-    }
-
-    function handleInputChange(event) {
-        setFormValues({
-            ...formValues,
-            [event.target.name]: event.target.value,
-        });
-    }
     
-    const handleChange = (event) => {
-        setSearchParams({ sort: event.target.value });
+          await fetch("http://localhost:8080/posts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formValues),
+          });
+    
+    
+          setFormValues({
+            title: "",
+            content: "",
+            category_id: "",
+          });
+    
+        
       };
+    
+
+    const handleInputChange = (event) => {
+        setFormValues({
+          ...formValues,
+          [event.target.name]: event.target.value,
+        });
+      };
+
+      const handleSelectChange = (event) => {
+        setFormValues({
+          ...formValues,
+          category_id: event.target.value,
+        });
+      };
+
+
     
 
     return (
@@ -35,22 +57,29 @@ export function FormPage() {
             id="title" 
             name="title" 
             value={formValues.title} 
-            onChange={handleInputChange}/>
+            onChange={handleInputChange}
+            required/>
             <label htmlFor="content">Content:</label>
             <input 
             type="text" 
             id="content"
             name="content"
             value={formValues.content}
-            onChange={handleInputChange}/>
-            <label htmlFor="category">Category:
-            <select value={searchParams.get("sort") || ""} onChange={handleChange}>
-                <option value="">Select a category</option>
-                <option value="tech">Technology</option>
-                <option value="life">Lifestyle</option>
-                <option value="edu">Education</option>
-            </select>
-            </label>
+            onChange={handleInputChange}
+            required/>
+            <label htmlFor="category">Category:</label>
+        <select
+          value={formValues.category_id}
+          onChange={handleSelectChange}
+          id="category"
+          name="category"
+          required
+        >
+          <option value="">Select a category</option>
+          <option value="1">Technology</option>
+          <option value="2">Lifestyle</option>
+          <option value="3">Education</option>
+        </select>
             <button type="submit">Add Post</button>
         </form>
         </>
