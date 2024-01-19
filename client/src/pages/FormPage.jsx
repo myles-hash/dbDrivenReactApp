@@ -49,7 +49,7 @@ export function FormPage() {
 
     return (
         <>
-        <h2>Add a New Post</h2>
+        <h2 id="title-top">Add a New Post</h2>
         <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title:</label>
             <input 

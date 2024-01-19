@@ -35,19 +35,20 @@ export function PostsPage() {
 
 
     return (<>
-        <h2>List of posts</h2>
+        <h2 id="title-top">List of posts</h2>
         <div id="messageContainer">
             {messages.map((message) => (
                 <div key={message.id}>
-                    <h2>Title: </h2>
-                    <h2>{message.title}</h2>
-                    <h3>Message: </h3>
-                    <h3>{message.content}</h3>
-                    <h4>Category: </h4>
-                    <p> {message.category_name}</p>
+                    <div id="titMesCat">
+                    <h2>Title: {message.title}</h2>
+                    <h3>Message: {message.content}</h3>
+                    <h4>Category: {message.category_name}</h4>
+                    </div>
+                    <div id="butsAndLikes">
                     <button onClick={() => handleLike(message.id)}>{message.likes === 1 ? 'Dislike' : 'Like'}</button>
                     <p>{message.likes} {message.likes === 1 ? 'like' : 'likes'}</p>
                     <button onClick={() => handleDelete(message.id)}>Delete</button>
+                    </div>
                 </div>
             ))}
         </div>

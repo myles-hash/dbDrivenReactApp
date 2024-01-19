@@ -6,10 +6,12 @@ import { FormPage } from "./pages/FormPage";
 export default function App(){
   return (
     <>
+    <header>
     <h1>Post Browser</h1>
-    <Link to="/">Home</Link> | <Link to="/posts">Posts</Link> | <Link to="/posts/add">Add new post</Link>
+    <Link to="/">HOME</Link> | <Link to="/posts">POSTS</Link> | <Link to="/posts/add">ADD NEW POST</Link>
+    </header>
     <Routes>
-      <Route path="/" element={<h2>HomePage</h2>} />
+      <Route path="/" element={<h2 id="title-top">HomePage</h2>} />
       <Route path="/posts" element={<PostsPage />} />
       <Route path="/posts/add" element={<FormPage />} />
       <Route path="*" element={<NotFoundPage />} />
