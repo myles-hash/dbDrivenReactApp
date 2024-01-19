@@ -18,3 +18,5 @@ INSERT INTO posts(title, content, category_id) VALUES('Tech test title', 'Tech t
 INSERT INTO posts(title, content, category_id) VALUES('Life test title', 'Life test content', 2);
 INSERT INTO posts(title, content, category_id) VALUES('Educate test title', 'Educate test content', 3);
 
+ALTER TABLE posts
+ADD COLUMN likes INT DEFAULT 0;
