@@ -4,7 +4,7 @@ export function PostsPage() {
     const [messages, setMessages] = useState([]);
 
     const getMessages = async () => {
-        const response = await fetch("http://localhost:8080/posts");
+        const response = await fetch("https://reactserver-q3ak.onrender.com/posts");
         const data = await response.json();
         const sortedMessages = data.sort((a, b) => a.id - b.id);
         setMessages(sortedMessages);
@@ -17,7 +17,7 @@ export function PostsPage() {
 
 
     const handleLike = async (postId) => {
-        await fetch(`http://localhost:8080/posts/${postId}/like`, {
+        await fetch(`https://reactserver-q3ak.onrender.com/posts/${postId}/like`, {
             method: 'PUT',
         });
     
@@ -25,7 +25,7 @@ export function PostsPage() {
     };
 
     const handleDelete = async (postId) => {
-        const response = await fetch(`http://localhost:8080/posts/${postId}`, {
+        const response = await fetch(`https://reactserver-q3ak.onrender.com/posts/${postId}`, {
           method: 'DELETE',
         });
     

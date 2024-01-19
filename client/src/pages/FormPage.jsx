@@ -11,7 +11,7 @@ export function FormPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
     
-          await fetch("http://localhost:8080/posts", {
+          await fetch("https://reactserver-q3ak.onrender.com/posts", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
